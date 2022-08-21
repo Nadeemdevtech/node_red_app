@@ -1,0 +1,89 @@
+[
+    {
+        "id": "f7d9e8689641f632",
+        "type": "tab",
+        "label": "AD_Ports_API",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bfbc98396a47581a",
+        "type": "http in",
+        "z": "f7d9e8689641f632",
+        "name": "",
+        "url": "/test",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 240,
+        "wires": [
+            [
+                "76469e076f59e0d1"
+            ]
+        ]
+    },
+    {
+        "id": "2fe41199aed97f1d",
+        "type": "http response",
+        "z": "f7d9e8689641f632",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 610,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "7db5a365a3ed847a",
+        "type": "sqlite",
+        "z": "f7d9e8689641f632",
+        "mydb": "70042ab88621c9ba",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "Master",
+        "x": 470,
+        "y": 360,
+        "wires": [
+            [
+                "2fe41199aed97f1d"
+            ]
+        ]
+    },
+    {
+        "id": "76469e076f59e0d1",
+        "type": "function",
+        "z": "f7d9e8689641f632",
+        "name": "",
+        "func": "msg.topic=\"Select * From ASN_4232344\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "7db5a365a3ed847a"
+            ]
+        ]
+    },
+    {
+        "id": "84eb23780305ab64",
+        "type": "comment",
+        "z": "f7d9e8689641f632",
+        "name": "Get Request",
+        "info": "",
+        "x": 170,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "70042ab88621c9ba",
+        "type": "sqlitedb",
+        "db": "C:/Users/Nadeem Ch/Desktop/AD_Port_Data.db",
+        "mode": "RWC"
+    }
+]
